@@ -1,20 +1,168 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.27.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
 
+<div class="row appCont">
+  <div class="col-xs-12 col-md-12 col-lg-9 centered colHeader">
+    <div class="imgTitle pulse infinite animated"><img src="./assets/img/treeFilled.png"></div>
+    <h1 class="appTitle">Nuestras Plazas</h1>
+  </div>
+  <div class="col-xs-12 col-lg-3 visible-lg-* filterBoxTitleCont colHeader">
+    <h2 class="filterBoxTitle">Buscá nuestros Plazas</h2>
+  </div>
+  <div class="col-xs-12 col-md-12 col-lg-6 no-padding mapCont">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <!-- <agm-data-layer [geoJson]="geoJson" (layerClick)="clicked($event)" [style]="styleFunc">
+   	    </agm-data-layer> -->
+        <agm-data-layer [geoJson]="geoJsonEspaciosV" (layerClick)="clicked(valueChange)" [style]="styleFuncEspacios">
+        </agm-data-layer>
+    </agm-map>
+    <div class="referencias">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <div id="referenciasLink">REFERENCIAS DEL COLOR DEL MAPA <i class="arrow up"></i></div>
+        </div>
+        <div class="col-xs-12 col-lg-12 refColores" id="referencias" style="display: none;">
+          <div class="row">
+            <div class="col-xs-4 col-lg-4">
+              <div class="refIndicador azul"><div class="circuloIndicador"></div></div><span class="colorRef">azúl</span>
+              <div class="textRefIndicador">árboles plantados</div>
+            </div>
+            <div class="col-xs-4 col-lg-4">
+              <div class="refIndicador rojo"><div class="circuloIndicador"></div></div><span class="colorRef">rojo</span>
+              <div class="textRefIndicador">árboles faltantes</div>
+            </div>
+            <div class="col-xs-4 col-lg-4">
+              <div class="refIndicador verde"><div class="circuloIndicador"></div></div><span class="colorRef">verde</span>
+              <div class="textRefIndicador">árboles censados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="totalPaginas>0" class="cargando">Cargando página {{nroPagActual}} de {{totalPaginas| number:'1.0-0'}}</div>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-3 indicadoresContCol">
+    <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/ambiente/arbolado-municipal/2770" class="btnDescargar" target="_blank">Descargar
+      <span class="la-stack" title="Icono de descarga">
+        <span class="la la-circle-thin la-stack-2x"></span>
+        <span class="la la-download la-stack-1x"></span>
+      </span>
+    </a>
+    <div class="indicadoresCont">
+      <h2 class="indicadorTitle">Indicadores de Plazas</h2>
+        <div class="indicadorRow">
+          <div class="indicador">Plazas</div>
+          <div class="valor">sdadasda</div><!--{{plantedTrees | number:'1.0-0':'es'}}</div> -->
+        </div>
+        <div class="indicadorRow">
+          <div class="indicador">Tipo de plazas</div>
+          <div class="valor">{{plazasTipo | number:'1.0-0':'es'}}</div>
+        </div>
+      <h2 class="indicadorTitle">Indicadores del Censo</h2>
+        <div class="indicadorRow">
+          <div class="indicador">Plazas</div>
+          <div class="valor">{{totalPlazas | number:'1.0-0':'es'}}</div>
+        </div>
+        <div class="indicadorRow">
+          <div class="indicador">Juegos</div>
+          <div class="valor">sdadasda</div><!-- <div class="valor">{{emptyTrees | number:'1.0-0':'es'}}</div> -->
+        </div>
+        <div class="indicadorRow">
+          <div class="indicador">Parques</div>
+          <div class="valor">sdadasda</div><!-- <div class="valor">{{emptyTrees | number:'1.0-0':'es'}}</div> -->
+        </div>
+        <div class="indicadorRow">
+          <div class="indicador">Total</div>
+          <div class="valor">sdadasda</div><!-- <div class="valor">{{totalPlazas + emptyTrees | number:'1.0-0':'es'}}</div>-->
+        </div>
+        <!-- <div class="indicadorRow">
+          <div class="indicador">Especies</div>
+          <div class="valor">{{species.length | number:'1.0-0':'es'}}</div>
+        </div> -->
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6 hidden-lg filterBoxTitleCont colHeader">
+    <h2 class="filterBoxTitle">Buscá nuestros árboles</h2>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-3 no-padding filterCol">
+    <div class="filterContainer">
+      <!-- <div class="treeImg"><img src="/assets/img/treeFilled.png"></div> -->
+
+      <!-- Dropdrown Barrio -->
+      <dl class="dropdownSelect">
+        <dt>
+        <a href="#">
+          <span class="hida">Barrio<span *ngIf="selectedBarrio.length>0">:<span *ngIf="selectedBarrio.length < barrioFilter.length"><span *ngFor="let s of selectedArrayFromTextNames(barrioFilter, selectedBarrio)"> {{s.name}},</span></span><span *ngIf="selectedBarrio.length == barrioFilter.length">Todos</span></span></span><i class="arrow down"></i>
+        </a>
+        </dt>
+
+        <dd>
+            <div class="mutliSelect">
+                <ul>
+                    <li>
+                      <input name="selectAllB" type="checkbox" (change)="selectAllBarrios()"/>Seleccionar Todos
+                    </li>
+                    <li *ngFor="let b of barrioFilter; let i = index">
+                        <input name="selectedB[]" value="{{b.id}}" type="checkbox" (change)="checkBarrio(b.id)" [(ngModel)]="b.checked"/>{{b.name}}
+                    </li>
+                </ul>
+            </div>
+        </dd>
+      </dl>
+
+      <div class="btn btnFiltrar" (click)="filterPlazas()"><div>Filtrar <i class="fa fa-filter" aria-hidden="true"></i></div></div>
+      <p class="titleFooterFilters">Arbolado</p>
+    </div>
+    <div class="titFooterBox">
+      <div class="row">
+        <div class="col-xs-6 col-lg-6">
+          <p class="cantArboles">Se muestran</p>
+        </div>
+        <div class="col-xs-6 col-lg-6">
+          <p class="hl mostrar">321 plazas</p>
+          <!-- <p class="hl mostrar">{{cantArboles}} árboles</p> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-lg-6">
+          <p class="cantArboles">Total</p>
+        </div>
+        <div class="col-xs-6 col-lg-6">
+          <p class="hl mostrar">333 árboles</p>
+          <!-- <p class="hl total">{{cantTotalArboles}} árboles</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row treeFile" *ngIf="selectedTree">
+  <div class="closeSelectedTree" (click)="resetSelectedTree()"><div class="cont"><i class="fa fa-chevron-up" aria-hidden="true"></i></div></div>
+  <div class="col-xs-12 col-lg-5 colFile">
+    <div class="treePic">
+      <a href="{{selectedTree.properties.foto.thumbnail}}" target="_blank" rel="noopener"><img src="{{selectedTree.properties.foto.thumbnail}}"></a>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-7 colFile">
+    <div class="treeInfo">
+      <div class="treeHeader">
+        <div class="treeImg"><img src="/assets/img/treeFile.png"></div>
+        <div class="treeSpeciesCont">
+          <p class="titFilter">Especie</p>
+          <p class="treeInfoText">{{selectedTree.properties.especie.name}}</p>
+        </div>
+      </div>
+      <div class="treeDataCont">
+        <p class="treeData"><span class="titFilter">Barrio: </span><span class="treeInfoText">{{selectedTree.properties.barrio}}</span></p>
+        <p class="treeData"><span class="titFilter">Cazuela: </span><span class="treeInfoText">{{selectedTree.properties.cazuela}}</span></p>
+        <p class="treeData"><span class="titFilter">Estado Fitosanitario: </span><span class="treeInfoText">{{selectedTree.properties.estadoFitosanitario}}</span></p>
+        <p class="treeData"><span class="titFilter">Inclinación: </span><span class="treeInfoText">{{selectedTree.properties.inclinacion}}</span></p>
+        <p class="treeData"><span class="titFilter">Descalzado: </span><span class="treeInfoText capitalize">{{selectedTree.properties.descalzado}}</span></p>
+        <p class="treeData"><span class="titFilter">Fuste Partido: </span><span class="treeInfoText capitalize">{{selectedTree.properties.fustePartido}}</span></p>
+        <p class="treeData"><span class="titFilter">Tipo de Orden: </span><span class="treeInfoText">{{selectedTree.properties.tipoOrden}}</span></p>
+      </div>
+    </div>
+  </div>
+</div> -->

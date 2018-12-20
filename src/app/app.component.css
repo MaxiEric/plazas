@@ -1,0 +1,558 @@
+agm-map {
+  height: 500px;
+  width: 100%
+}
+.filterCol{
+  position: relative;
+  height: auto;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.15em;
+}
+
+.no-padding{
+  padding: 0;
+}
+.appCont{
+  border-bottom: 1px solid #f46151;
+}
+.filterCol{
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow:scroll;
+  border-left: 1px solid #f46151;
+}
+.indicadoresContCol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filterContainer{
+  background-color: #FFF;
+  padding: 10px;
+  position: relative;
+}
+
+.titFooterBox{
+  margin: 0;
+  color: #FF00FF;
+  background-color: #C8C5EF;
+  border-bottom: 1px solid #AAA;
+  padding: 10px;
+
+}
+
+.titleFooterFilters{
+  color: #f46151;
+  font-style: italic;
+  margin: 0;
+}
+.titFilter{
+  margin: 0;
+  color: #ea8d83ff;
+  font-family: 'Lato', sans-serif;
+}
+
+
+
+.dropdownSelect {
+  border-radius: 0px;
+  border: none;
+  height: 40px;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.dropdownSelect.first,
+.dropdownSelect.first dt{
+  height: 30px;
+}
+
+.dropdownSelect.first dt a{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 30px;
+  color: #f46151;
+  border-bottom: 1px solid #AAA;
+  padding-right: 40px;
+}
+
+
+.dropdownSelect dd,
+.dropdownSelect dt {
+  margin: 0px;
+  padding: 0px;
+  height: 40px;
+}
+
+.dropdownSelect ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdownSelect dd {
+  position: relative;
+}
+
+.dropdownSelect a,
+.dropdownSelect a:visited {
+  /* color: #fff; */
+  /* text-decoration: none;
+  outline: none;
+  font-size: 12px; */
+  display: inline-block;
+  font-weight: 400;
+}
+
+.dropdownSelect dt a {
+  width: 100%;
+  height: 40px;
+  border-radius: 0px;
+  border: none;
+  padding: 10px 10px 10px 0px;
+  color: #ea8d83ff;
+  font-family: 'Lato', sans-serif;
+  background-color: #FFFFFF;
+  padding-right: 30px;
+  border-bottom: 1px solid #B6B6B7;
+}
+
+.dropdownSelect dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+.hida{
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+.dropdownSelect dd{
+  display: none;
+  z-index: 2;
+}
+.dropdownSelect dd ul {
+  background-color: #FFFFFF;
+  border: 0;
+  /* color: #000000; */
+  color: #ea8d83ff;
+  left: 0px;
+  padding: 10px 15px 10px 15px;
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  list-style: none;
+  height: 300px;
+  overflow: scroll;
+  display: none;
+  -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+  -moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+  box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.32);
+}
+
+.dropdownSelect.smallDrop dd ul {
+  height: 125px;
+  overflow: scroll;
+}
+.dropdownSelect.smallerDrop dd ul {
+  height: 100px;
+  overflow: scroll;
+}
+.dropdownSelect.smallestDrop dd ul {
+  height: 75px;
+  overflow: scroll;
+}
+
+.dropdownSelect span.value {
+  display: none;
+}
+
+.dropdownSelect dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdownSelect dd ul li a:hover {
+  background-color: #fff;
+}
+input[type=checkbox]{
+  margin-right: 5px;
+}
+
+.mapCont{
+  position: relative;
+}
+
+.btnFiltrar{
+  width: 100%;
+  height: 40px;
+  background-color: #f46151;
+  color: #FFF;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.btnFiltrar.btnVolver{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.btnFiltrar:hover{
+  background-color: #632a9c;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+/* Ficha Arbol */
+.colFile{
+  margin-top: 10px;
+}
+.treeFile{
+  position: relative;
+  padding: 50px 10px;
+  background-color: #FFFFFF;
+  background-image: url("/assets/img/arboles.jpg");
+  background-position: left center;
+  background-size: cover;
+}
+.closeSelectedTree{
+  position: absolute;
+  left: 50%;
+  top:0;
+}
+.closeSelectedTree .cont{
+  position: relative;
+  left: -50%;
+  background-color: #f46151;
+  color: #FFF;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.closeSelectedTree .cont:hover{
+  cursor: pointer;
+  background-color: #632a9c;
+}
+.treePic{
+  width: 100%;
+  max-width: 450px;
+  max-height: 450px;
+  margin: 0 auto;
+}
+.treePic img{
+  width: 100%;
+  max-width: 450px;
+  max-height: 450px;
+  object-fit: cover;
+}
+.treeInfo{
+  /* height: 100%; */
+  height: 450px;
+  padding: 30px;
+  width: 100%;
+  background-color: #FFF;
+  margin: 0 auto;
+  position: relative;
+  font-size: 1.25em;
+}
+
+.treeInfoText{
+  margin-top: -5px;
+  color: #f46151;
+  margin-bottom: 3px;
+}
+.treeImg{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.treeImg img{
+  height: 50px;
+}
+.treeInfo .treeImg{
+  top: 30px;
+  right: 30px;
+}
+.treeInfo .treeImg img{
+  height: 40px;
+}
+.treeHeader{
+  height: 50px;
+}
+.treeSpeciesCont{
+  border-bottom: 1px solid #AAA;
+}
+
+.treeDataCont{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.treeData{
+  margin: 0;
+}
+
+.arrow {
+  border: solid #f46151;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  top: 18px;
+  right: 5px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.cantArboles{
+  color: #ea8d83ff;
+  font-style: italic;
+  margin: 0;
+}
+.hl{
+  color: #f46151;
+  margin: 0;
+}
+.hl.mostrar{
+  font-weight: 600;
+}
+.hl.total{
+  font-style: italic;
+}
+.selectAll:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cargando{
+  position: absolute;
+  width: auto;
+  bottom: 5px;
+  left: 5px;
+  background-color: #f46151;
+  color: #FFFFFF;
+  padding:5px 10px;
+  margin: 0;
+}
+#referenciasLink:hover{
+  cursor: pointer;
+}
+.referencias .arrow {
+    border: solid #f46151;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    position: absolute;
+    top: 10px;
+    right: 3px;
+}
+.referencias{
+  position: absolute;
+  width: 320px;
+  bottom: 24px;
+  right: 50px;
+  background-color: #FFFFFF;
+  color: #f46151;
+  padding: 5px 20px 5px 10px;
+  margin: 0;
+}
+.centered{
+  text-align: center;
+}
+.imgTitle {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.imgTitle img{
+  height: 70px;
+}
+.appTitle{
+  display: inline-block;
+  color: #f46151;
+  text-transform: uppercase;
+  font-size: 2.25em;
+  vertical-align: -10px;
+  margin-left: 10px;
+}
+.filterBoxTitleCont{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 5px solid #f46151;
+}
+.filterBoxTitle{
+  margin-bottom: 0px;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  text-align: center;
+  font-style: italic;
+  color: #f46151;
+  font-weight: 500;
+}
+
+.btnDescargar{
+  width: 100%;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #C8C5EF;
+  color: #f46151;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-top: 40px;
+}
+.btnDescargar:hover{
+  background-color: #C8C5EF;
+}
+.btnDescargar .la-stack{
+  float: right;
+  margin-top: -6px;
+}
+.indicadorTitle{
+  font-size: 1.25em;
+  color: #f46151;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.indicadoresCont{
+  padding: 15px;
+  margin-top: 30px;
+}
+.indicadoresCont li{
+  color: #f46151;
+}
+.indicadorRow{
+  display: list-item;
+  color:#f46151;
+}
+.indicadorRow .indicador{
+  color: #ea8d83ff;
+  text-align: left;
+  display: inline-block;
+  width: 100px;
+}
+.indicadorRow .valor{
+  color: #c6465cff;
+  font-size: 1.25em;
+  font-weight: 600;
+  text-align: left;
+  margin-top: -4px;
+  display: inline-block;
+    margin-left: 40px;
+}
+
+.refColores{
+  text-align: center;
+}
+.colorRef{
+  color: #ea8d83ff;
+  font-style: italic;
+  font-size: 0.75em;
+}
+.refIndicador{
+  border: 1px solid #000;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  margin-right: 5px;
+}
+.refIndicador.azul{
+  border-color: #3635c4;
+}
+.refIndicador.rojo{
+  border-color: #c43635;
+}
+.refIndicador.verde{
+  border-color: #30b030;
+}
+.textRefIndicador{
+  color: #4B4B4C;
+  font-style: italic;
+  font-size: 0.9em;
+}
+.refIndicador .circuloIndicador{
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.refIndicador.azul .circuloIndicador{
+  background-color: #3635c4;
+}
+.refIndicador.rojo .circuloIndicador{
+  background-color: #c43635;
+}
+.refIndicador.verde .circuloIndicador{
+  background-color: #30b030;
+}
+
+
+
+
+
+
+@media(min-width:576px){
+}
+@media(min-width:768px){}
+@media(min-width:992px){
+
+  agm-map,
+  .filterCol{
+    position: relative;
+    min-height: 520px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15em;
+  }
+  .treeFile{
+    padding: 50px;
+  }
+}
+@media(min-width:1200px){
+  .btnDescargar{
+    margin-top: 0px;
+  }
+}
