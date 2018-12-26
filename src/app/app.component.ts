@@ -5,6 +5,7 @@ import { PlazasService } from './plazas.service';
 import { FiltroStandard, Plaza, Properties, Foto} from './plaza';
 import * as $ from 'jquery';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -45,13 +46,18 @@ export class AppComponent {
 
 
   //variables al seleccionar una plaza
-  selectedPlaza : Plaza;
+  selectedPlaza : Plaza | null = null;
 
 
-
+  images = [];
   constructor(private _plazasService: PlazasService) { }
 
   ngOnInit() {
+
+    this.images.push('https://pay.google.com/about/static/images/social/knowledge_graph_logo.png');
+    this.images.push('https://pay.google.com/about/static/images/social/knowledge_graph_logo.png');
+    this.images.push('https://pay.google.com/about/static/images/social/knowledge_graph_logo.png');
+
     // this.getPlazas();
     this.getEspacios();
     this.getStatistics();
@@ -162,6 +168,7 @@ export class AppComponent {
   }
 
  clicked(clickEvent) {
+   this.selectedPlaza = null;
     console.log("clickEvent",clickEvent);
     // barrio: string;
     //
@@ -172,11 +179,23 @@ export class AppComponent {
     console.log("properties.tipo",clickEvent.feature.l.tipo);
     console.log("properties.fecha_inicio",clickEvent.feature.l.fecha_inicio);
     console.log("properties.fecha_finalizacion_estimada",clickEvent.feature.l.fecha_finalizacion_estimada);
+    let auxUrloriginal = 'https://gobiernoabierto.cordoba.gob.ar'+clickEvent.feature.l.trazados[0].adjuntos[0].foto.original;
+    let auxUrlThumbnail = 'https://gobiernoabierto.cordoba.gob.ar'+clickEvent.feature.l.trazados[0].adjuntos[0].foto.thumbnail_500;
 
 
-    let auxFoto = new Foto("url:original","url: thumbnail");
-    console.log(auxFoto)
-    // let auxProperties :Properties;
+    let auxFoto = new Foto(auxUrloriginal,auxUrlThumbnail);
+    console.log(auxFoto);
+
+    let auxProperties = new Properties(clickEvent.feature.l.barrios[0].nombre,
+                    clickEvent.feature.l.fecha_inicio,
+                    clickEvent.feature.l.fecha_finalizacion_estimada,
+                    auxFoto,
+                    clickEvent.feature.l.tipo);
+    let auxPlaza = new Plaza('id','nombre de la plaza',auxProperties);
+    this.selectedPlaza = auxPlaza;
+    console.log("datos ordenados auxPlazas", this.selectedPlaza);
+
+    console.log("properties", this.selectedPlaza.properties);
     // auxProperties
     //
     // this.selectedPlaza("idd",
@@ -195,11 +214,11 @@ export class AppComponent {
 
     //this.selectedTree = this.getTreeInfo(event);
 
-    // setTimeout(function(){
-    //   $('html, body').animate({
-    //      scrollTop: $(".treeFile").offset().top - 165
-    //   }, 1000);
-    // }, 250);
+    setTimeout(function(){
+      $('html, body').animate({
+         scrollTop: $(".treeFile").offset().top - 165
+      }, 1000);
+    }, 250);
   }
 
   styleFunc(feature) {
@@ -290,6 +309,7 @@ export class AppComponent {
   }
 
   filterPlazas(){
+    this.geoJsonEspaciosV = null;
     console.log("selectedBarrio",this.selectedBarrio);
     this.getPlazasWFilter(this.selectedBarrio);
   }

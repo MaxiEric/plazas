@@ -15,7 +15,7 @@
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <!-- <agm-data-layer [geoJson]="geoJson" (layerClick)="clicked($event)" [style]="styleFunc">
    	    </agm-data-layer> -->
-        <agm-data-layer [geoJson]="geoJsonEspaciosV" (layerClick)="clicked(valueChange)" [style]="styleFuncEspacios">
+        <agm-data-layer [geoJson]="geoJsonEspaciosV" (layerClick)="clicked($event)" [style]="styleFuncEspacios">
         </agm-data-layer>
     </agm-map>
     <div class="referencias">
@@ -63,7 +63,7 @@
       <h2 class="indicadorTitle">Indicadores del Censo</h2>
         <div class="indicadorRow">
           <div class="indicador">Plazas</div>
-          <div class="valor">{{totalPlazas | number:'1.0-0':'es'}}</div>
+          <div class="valor">sdadasda</div><!--<div class="valor">{{totalPlazas | number:'1.0-0':'es'}}</div>-->
         </div>
         <div class="indicadorRow">
           <div class="indicador">Juegos</div>
@@ -138,31 +138,37 @@
   </div>
 </div>
 
-<!-- <div class="row treeFile" *ngIf="selectedTree">
+ <div class="row treeFile" *ngIf="selectedPlaza">
   <div class="closeSelectedTree" (click)="resetSelectedTree()"><div class="cont"><i class="fa fa-chevron-up" aria-hidden="true"></i></div></div>
   <div class="col-xs-12 col-lg-5 colFile">
     <div class="treePic">
-      <a href="{{selectedTree.properties.foto.thumbnail}}" target="_blank" rel="noopener"><img src="{{selectedTree.properties.foto.thumbnail}}"></a>
+      <a href="{{selectedPlaza.properties.foto.thumbnail}}" target="_blank" rel="noopener"><img src="{{selectedPlaza.properties.foto.original}}"></a>
     </div>
   </div>
   <div class="col-xs-12 col-lg-7 colFile">
     <div class="treeInfo">
       <div class="treeHeader">
-        <div class="treeImg"><img src="/assets/img/treeFile.png"></div>
+        <div class="treeImg"><img src="/assets/img/treeFilled.png"></div>
         <div class="treeSpeciesCont">
-          <p class="titFilter">Especie</p>
-          <p class="treeInfoText">{{selectedTree.properties.especie.name}}</p>
+            <!-- <p class="titFilter">Nombre</p> -->
+          <p class="treeInfoText">{{selectedPlaza.nombre}}</p>
         </div>
       </div>
-      <div class="treeDataCont">
-        <p class="treeData"><span class="titFilter">Barrio: </span><span class="treeInfoText">{{selectedTree.properties.barrio}}</span></p>
-        <p class="treeData"><span class="titFilter">Cazuela: </span><span class="treeInfoText">{{selectedTree.properties.cazuela}}</span></p>
-        <p class="treeData"><span class="titFilter">Estado Fitosanitario: </span><span class="treeInfoText">{{selectedTree.properties.estadoFitosanitario}}</span></p>
-        <p class="treeData"><span class="titFilter">Inclinación: </span><span class="treeInfoText">{{selectedTree.properties.inclinacion}}</span></p>
-        <p class="treeData"><span class="titFilter">Descalzado: </span><span class="treeInfoText capitalize">{{selectedTree.properties.descalzado}}</span></p>
+      <div class="treeDataCont col-xs-12 col-lg-6" style="">
+        <p class="treeData"><span class="titFilter">Barrio: </span><span class="treeInfoText">{{selectedPlaza.properties.barrio}}</span></p>
+        <p class="treeData"><span class="titFilter">Cazuela: </span><span class="treeInfoText">detalle</span></p><!--{{selectedTree.properties.cazuela}}</span></p>-->
+        <p class="treeData"><span class="titFilter">Estado Fitosanitario: </span><span class="treeInfoText">detalle</span></p><!--{{selectedTree.properties.estadoFitosanitario}}</span></p>-->
+        <p class="treeData"><span class="titFilter">Inclinación: </span><span class="treeInfoText">detalle</span></p><!--{{selectedTree.properties.inclinacion}}</span></p>-->
+        <!-- <p class="treeData"><span class="titFilter">Descalzado: </span><span class="treeInfoText capitalize">{{selectedTree.properties.descalzado}}</span></p>
         <p class="treeData"><span class="titFilter">Fuste Partido: </span><span class="treeInfoText capitalize">{{selectedTree.properties.fustePartido}}</span></p>
-        <p class="treeData"><span class="titFilter">Tipo de Orden: </span><span class="treeInfoText">{{selectedTree.properties.tipoOrden}}</span></p>
+        <p class="treeData"><span class="titFilter">Tipo de Orden: </span><span class="treeInfoText">{{selectedTree.properties.tipoOrden}}</span></p>-->
       </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <p>columnaaa</p>
+        <ngbd-carousel-basic></ngbd-carousel-basic>
+      </div>
+
     </div>
   </div>
-</div> -->
+</div>

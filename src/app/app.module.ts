@@ -13,10 +13,13 @@ import { MapContentComponent } from './map-content/map-content.component';
 import { PlazasService } from './plazas.service';
 registerLocaleData(localeEs, 'es');
 
+import { NgbdCarouselBasic } from './carousel-basic';
+
 @NgModule({
   declarations: [
     AppComponent,
-    MapContentComponent
+    MapContentComponent,
+    NgbdCarouselBasic
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ registerLocaleData(localeEs, 'es');
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAYw1rqa9mL1-__v8h2CVgsRJmpmP2mP1s' // AIzaSyAYw1rqa9mL1-__v8h2CVgsRJmpmP2mP1s
     }),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [PlazasService,],
   bootstrap: [AppComponent]
