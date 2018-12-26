@@ -45,15 +45,15 @@ export class AppComponent {
 
 
   //variables al seleccionar una plaza
-  selectedPlaza : Plaza;
-
+  selectedPlaza : Plaza | null = null;
 
 
   constructor(private _plazasService: PlazasService) { }
 
   ngOnInit() {
-    // this.getPlazas();
-    this.getEspacios();
+
+     this.getPlazas();
+    //this.getEspacios();
     this.getStatistics();
 
     $(document).on('click', ".dropdownSelect dt a", function(e) {
@@ -108,27 +108,27 @@ export class AppComponent {
         () => {
           console.log("this.geoJson", this.geoJson)
           this.plazasTipo = this.plazasData.results.features[0].properties.tipo_id;
-          this.geoJson = this.plazasData.results;
+          //this.geoJson = this.plazasData.results;
 
           /* ESTO ES para que recorra toda la api para traer completo; lo limite arriba para traer pocos*/
-          // if(this.pagePlazas == 1){
-          //   this.geoJsonObject = this.plazasData.results;
-          //   console.log("this.geoJsonObject",this.geoJsonObject)
-          // }
-          // else{
-          //   this.plazasData.results.features.forEach(e => {
-          //     this.geoJsonObject.features.push(e);
-          //   });
-          //   console.log("entro al else",this.geoJsonObject)
-          // }
-          // if(this.plazasData.next!=null){
-          //   this.pagePlazas+=1;
-          //   console.log("está por dar otra vuelta!", this.pagePlazas)
-          //   this.getPlazas();
-          // }else{
-          //   this.geoJson = this.geoJsonObject;
-          //   console.log("termino")
-          // }
+          if(this.pagePlazas == 1){
+            this.geoJsonObject = this.plazasData.results;
+            console.log("this.geoJsonObject",this.geoJsonObject)
+          }
+          else{
+            this.plazasData.results.features.forEach(e => {
+              this.geoJsonObject.features.push(e);
+            });
+            console.log("entro al else",this.geoJsonObject)
+          }
+          if(this.plazasData.next!=null){
+            this.pagePlazas+=1;
+            console.log("está por dar otra vuelta!", this.pagePlazas)
+            this.getPlazas();
+          }else{
+            this.geoJson = this.geoJsonObject;
+            console.log("termino")
+          }
 
 
         }
@@ -161,7 +161,8 @@ export class AppComponent {
     );
   }
 
- clicked(clickEvent) {
+  clicked(clickEvent) {
+   this.selectedPlaza = null;
     console.log("clickEvent",clickEvent);
     // barrio: string;
     //
@@ -172,11 +173,23 @@ export class AppComponent {
     console.log("properties.tipo",clickEvent.feature.l.tipo);
     console.log("properties.fecha_inicio",clickEvent.feature.l.fecha_inicio);
     console.log("properties.fecha_finalizacion_estimada",clickEvent.feature.l.fecha_finalizacion_estimada);
+    let auxUrloriginal = 'https://gobiernoabierto.cordoba.gob.ar'+clickEvent.feature.l.trazados[0].adjuntos[0].foto.original;
+    let auxUrlThumbnail = 'https://gobiernoabierto.cordoba.gob.ar'+clickEvent.feature.l.trazados[0].adjuntos[0].foto.thumbnail_500;
 
 
-    let auxFoto = new Foto("url:original","url: thumbnail");
-    console.log(auxFoto)
-    // let auxProperties :Properties;
+    let auxFoto = new Foto(auxUrloriginal,auxUrlThumbnail);
+    console.log(auxFoto);
+
+    let auxProperties = new Properties(clickEvent.feature.l.barrios[0].nombre,
+                    clickEvent.feature.l.fecha_inicio,
+                    clickEvent.feature.l.fecha_finalizacion_estimada,
+                    auxFoto,
+                    clickEvent.feature.l.tipo);
+    let auxPlaza = new Plaza('id','nombre de la plaza',auxProperties);
+    this.selectedPlaza = auxPlaza;
+    console.log("datos ordenados auxPlazas", this.selectedPlaza);
+
+    console.log("properties", this.selectedPlaza.properties);
     // auxProperties
     //
     // this.selectedPlaza("idd",
@@ -195,11 +208,11 @@ export class AppComponent {
 
     //this.selectedTree = this.getTreeInfo(event);
 
-    // setTimeout(function(){
-    //   $('html, body').animate({
-    //      scrollTop: $(".treeFile").offset().top - 165
-    //   }, 1000);
-    // }, 250);
+    setTimeout(function(){
+      $('html, body').animate({
+         scrollTop: $(".treeFile").offset().top - 165
+      }, 1000);
+    }, 250);
   }
 
   styleFunc(feature) {
@@ -286,6 +299,7 @@ export class AppComponent {
         selectedNames.push(e);
       }
     });
+    console.log("selectedName",selectedNames)
     return selectedNames;
   }
 
@@ -304,8 +318,8 @@ export class AppComponent {
             console.log("this.espaciosVData.results", auxFilterData.results)
             this.totalPlazas = auxFilterData.count;
             this.plazasTipo = auxFilterData.results.features[0].properties.tipo_id;
-            this.geoJsonEspaciosV = auxFilterData.results;
-            this.geoJson = null;
+            //this.geoJsonEspaciosV = auxFilterData.results;
+            this.geoJson = auxFilterData.results;
           }
       );
   }

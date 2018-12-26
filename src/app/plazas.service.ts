@@ -12,10 +12,10 @@ export class PlazasService {
   constructor(private http:HttpClient) { }
 
   getPlazas(page){
-    return this.http.get('https://gobiernoabierto.cordoba.gob.ar/api/v2/espacios-verdes/frentes-espacios-verdes/?page='+11+'&page_size=10');
+    return this.http.get('https://gobiernoabierto.cordoba.gob.ar/api/v2/espacios-verdes/espacios-verdes/?page='+page+'&page_size=40');
   }
   getEspaciosVerdes(page){
-    return this.http.get('https://gobiernoabierto.cordoba.gob.ar/api/v2/espacios-verdes/espacios-verdes/?page='+page+'&page_size=40');
+    return this.http.get('https://gobiernoabierto.cordoba.gob.ar/api/v2/espacios-verdes/frentes-espacios-verdes/?page='+page+'&page_size=10');
   }
   getTotalPlazas(){
     return this.http.get('https://gobiernoabierto.cordoba.gob.ar/api/v2/arboles/contador-arboles');
